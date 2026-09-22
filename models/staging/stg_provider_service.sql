@@ -22,7 +22,7 @@ WITH typed AS (
         CAST(Rndrng_Prvdr_Mdcr_Prtcptg_Ind AS STRING) AS Rndrng_Prvdr_Mdcr_Prtcptg_Ind,
         CAST(Tot_HCPCS_Cds AS INT64) AS Tot_HCPCS_Cds,
         CAST(Tot_Benes AS INT64) AS Tot_Benes,
-        CAST(Tot_Srvcs AS INT64) AS Tot_Srvcs,
+        CAST(Tot_Srvcs AS Numeric) AS Tot_Srvcs,
         CAST(Tot_Sbmtd_Chrg AS NUMERIC) AS Tot_Sbmtd_Chrg,
         CAST(Tot_Mdcr_Alowd_Amt AS NUMERIC) AS Tot_Mdcr_Alowd_Amt,
         CAST(Tot_Mdcr_Pymt_Amt AS NUMERIC) AS Tot_Mdcr_Pymt_Amt,

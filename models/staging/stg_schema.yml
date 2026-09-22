@@ -1,0 +1,94 @@
+version: 2
+
+models:
+    # ----------------------------------------------------
+    # 1. Staging Enrollment
+    # ----------------------------------------------------
+    - name: stg_enrollment
+      description: "Cleaned and typed Medicare provider enrollment records."
+      columns:
+        - name: ENRLMT_ID
+          description: "Primary key: Unique Medicare enrollment identifier."
+          data_tests:
+            - unique
+            - not_null
+
+        - name: NPI
+          description: "National Provider Identifier."
+          data_tests:
+            - not_null
+
+        - name: STATE_CD
+          description: "Standard 2-letter state code."
+          data_tests:
+            - not_null
+
+    # ----------------------------------------------------
+    # 2. Staging Practice Location
+    # ----------------------------------------------------
+    - name: stg_practice_location
+      description: "Staged provider practice addresses and location details."
+      columns:
+        - name: ENRLMT_ID
+          description: "Foreign key linking to stg_enrollment."
+          data_tests:
+            - not_null
+
+        - name: STATE_CD
+          description: "State code of the practice location."
+          data_tests:
+            - not_null
+
+    # ----------------------------------------------------
+    # 3. Staging Provider Service
+    # ----------------------------------------------------
+    - name: stg_provider_service
+      description: "Medicare provider service utilization, payment amounts, and beneficiary metrics."
+      columns:
+        - name: Rndrng_NPI
+          description: "Primary key: Rendering Provider National Provider Identifier."
+          data_tests:
+            - unique
+            - not_null
+
+        - name: Tot_Srvcs
+          description: "Total count of Medicare services provided."
+          data_tests:
+            - not_null
+
+        - name: Tot_Mdcr_Pymt_Amt
+          description: "Total Medicare payment amount."
+          data_tests:
+            - not_null
+
+    # ----------------------------------------------------
+    # 4. Staging Reassignment
+    # ----------------------------------------------------
+    - name: stg_reassignment
+      description: "Reassignment mappings between assigning and receiving enrollment IDs."
+      columns:
+        - name: EASGN_BNFT_ENRLMT_ID
+          description: "Enrollment ID of the provider reassigning benefits."
+          data_tests:
+            - not_null
+
+        - name: RCV_BNFT_ENRLMT_ID
+          description: "Enrollment ID receiving reassigned benefits."
+          data_tests:
+            - not_null
+
+    # ----------------------------------------------------
+    # 5. Staging Secondary Specialty
+    # ----------------------------------------------------
+    - name: stg_secondary_specialty
+      description: "Provider secondary specialties."
+      columns:
+        - name: ENRLMT_ID
+          description: "Enrollment ID of the provider."
+          data_tests:
+            - not_null
+
+        - name: PROVIDER_TYPE_CD
+          description: "Secondary provider specialty code."
+          data_tests:
+            - not_null
