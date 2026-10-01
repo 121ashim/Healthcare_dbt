@@ -33,6 +33,9 @@ models:
           description: "Foreign key linking to stg_enrollment."
           data_tests:
             - not_null
+            - relationships:
+                to: ref('stg_enrollment')
+                field: ENRLMT_ID
 
         - name: STATE_CD
           description: "State code of the practice location."
@@ -71,11 +74,17 @@ models:
           description: "Enrollment ID of the provider reassigning benefits."
           data_tests:
             - not_null
+            - relationships:
+                to: ref('stg_enrollment')
+                field: ENRLMT_ID
 
         - name: RCV_BNFT_ENRLMT_ID
           description: "Enrollment ID receiving reassigned benefits."
           data_tests:
             - not_null
+            - relationships:
+                to: ref('stg_enrollment')
+                field: ENRLMT_ID
 
     # ----------------------------------------------------
     # 5. Staging Secondary Specialty
@@ -87,6 +96,9 @@ models:
           description: "Enrollment ID of the provider."
           data_tests:
             - not_null
+            - relationships:
+                to: ref('stg_enrollment')
+                field: ENRLMT_ID
 
         - name: PROVIDER_TYPE_CD
           description: "Secondary provider specialty code."
