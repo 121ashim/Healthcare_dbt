@@ -14,7 +14,7 @@ Raw tables live in BigQuery under `healthcare-medicare.raw.*` and are transforme
 
 ---
 
-## 🏗️ Architecture
+## 🏗️ Architecture (Medallion Architecture reference)
 
 ```
 BigQuery raw tables  ──▶  staging (views: clean + typed)  ──▶  mart (tables: public, self-serve)  ──▶  Power BI
