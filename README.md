@@ -22,6 +22,7 @@ BigQuery raw tables  ──▶  staging (views: clean + typed)  ──▶  mart 
 
 | Layer | Materialization | Purpose |
 |-------|-----------------|---------|
+| **Raw** | `table` | Raw dataset improted using python from cms data source  |
 | **staging** | `view` | Cast types, trim whitespace, standardize columns, enforce data quality |
 | **mart** | `table` | Stable, documented, "public" tables that Power BI connects to |
 
